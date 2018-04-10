@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Module definition
+@category    DMC
+@package     DMC_Performance
+@author      digital.manufaktur GmbH / Hannover, Germany
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="DMC_Performance" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Catalog" />
+            <module name="Magento_Theme" />
+            <module name="Magento_Eav" />
+        </sequence>
+    </module>
+ </config>

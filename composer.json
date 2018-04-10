@@ -1,0 +1,27 @@
+{
+    "name": "dmc/m2-module-performance",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "description": "Performance enhancements for Magento 2",
+    "homepage": "https://github.com/digitalmanufaktur",
+    "keywords": [
+        "magento2",
+        "performance",
+        "speed",
+        "improvements"
+    ],
+    "require": {
+        "php": "7.0.2|7.0.4|~7.0.6|~7.1.0",
+        "magento/framework": ">=101.0.2",
+        "dmc/m2-module-base": "^1.0",
+        "magento/magento-composer-installer": "*"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "DMC\\Performance\\": "src/"
+        }
+    }
+}

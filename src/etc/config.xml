@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Configuration defaults
+@category    DMC
+@package     DMC_Performance
+@author      digital.manufaktur GmbH / Hannover, Germany
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <general>
+            <file>
+                <bunch_size>1000</bunch_size>
+            </file>
+        </general>
+        <import>
+            <format_v2>
+                <bunch_size>1000</bunch_size>
+            </format_v2>
+        </import>
+
+        <system>
+            <cron>
+                <async_indexing>1</async_indexing>
+                <use_separate_process>1</use_separate_process>
+            </cron>
+        </system>
+
+        <catalog>
+            <frontend>
+                <flat_catalog_category>1</flat_catalog_category>
+                <flat_catalog_product>1</flat_catalog_product>
+            </frontend>
+        </catalog>
+    </default>
+</config>

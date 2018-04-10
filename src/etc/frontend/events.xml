@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Event definitions
+@category    DMC
+@package     DMC_Performance
+@author      digital.manufaktur GmbH / Hannover, Germany
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <!-- Disable report table observers -->
+    <event name="catalog_product_compare_remove_product">
+        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductCompareClearObserver" disabled="true"/>
+    </event>
+    <event name="customer_login">
+        <observer name="reports" instance="Magento\Reports\Observer\CustomerLoginObserver" disabled="true"/>
+        <observer name="customer_log_login" instance="Magento\Customer\Observer\LogLastLoginAtObserver" disabled="true" />
+        <observer name="catalog" instance="Magento\Catalog\Observer\Compare\BindCustomerLoginObserver" shared="false" disabled="true" />
+    </event>
+    <event name="customer_logout">
+        <observer name="catalog" instance="Magento\Catalog\Observer\Compare\BindCustomerLogoutObserver" shared="false" disabled="true" />
+        <observer name="reports" instance="Magento\Reports\Observer\CustomerLogoutObserver" disabled="true"/>
+        <observer name="customer_visitor" instance="Magento\Customer\Observer\Visitor\BindCustomerLogoutObserver" disabled="true" />
+        <observer name="customer_log_logout" instance="Magento\Customer\Observer\LogLastLogoutAtObserver" disabled="true" />
+    </event>
+    <event name="catalog_controller_product_view">
+        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductViewObserver" disabled="true"/>
+    </event>
+    <event name="sendfriend_product">
+        <observer name="reports" instance="Magento\Reports\Observer\SendfriendProductObserver" disabled="true"/>
+    </event>
+    <event name="catalog_product_compare_add_product">
+        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductCompareAddProductObserver" disabled="true"/>
+    </event>
+    <event name="catalog_product_compare_item_collection_clear">
+        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductCompareClearObserver" disabled="true"/>
+    </event>
+    <event name="sales_quote_item_save_before">
+        <observer name="reports" instance="Magento\Reports\Observer\CheckoutCartAddProductObserver" disabled="true"/>
+    </event>
+    <event name="wishlist_add_product">
+        <observer name="reports" instance="Magento\Reports\Observer\WishlistAddProductObserver" disabled="true"/>
+    </event>
+    <event name="wishlist_share">
+        <observer name="reports" instance="Magento\Reports\Observer\WishlistShareObserver" disabled="true"/>
+    </event>
+
+    <!-- Disable customer logging -->
+    <event name="controller_action_predispatch">
+        <observer name="customer_visitor" instance="Magento\Customer\Observer\Visitor\InitByRequestObserver" disabled="true" />
+    </event>
+    <event name="controller_action_postdispatch">
+        <observer name="customer_visitor" instance="Magento\Customer\Observer\Visitor\SaveByRequestObserver" disabled="true" />
+    </event>
+    <event name="customer_data_object_login">
+        <observer name="customer_visitor" instance="Magento\Customer\Observer\Visitor\BindCustomerLoginObserver" disabled="true" />
+    </event>
+    <event name="checkout_quote_destroy">
+        <observer name="customer_visitor" instance="Magento\Customer\Observer\Visitor\BindQuoteDestroyObserver" disabled="true" />
+    </event>
+
+    <!-- Speed up the list collection load by preloading data -->
+    <event name="catalog_block_product_list_collection">
+        <!--<observer name="review" instance="Magento\Review\Observer\CatalogBlockProductCollectionBeforeToHtmlObserver" shared="false" disabled="true" />-->
+        <observer name="dmc_performance_catalog_block_product_list_collection" instance="DMC\Performance\Observer\CatalogBlockProductListCollection"/>
+    </event>
+
+</config>

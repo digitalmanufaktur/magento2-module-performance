@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+DI definitions
+@category    DMC
+@package     DMC_Performance
+@author      digital.manufaktur GmbH / Hannover, Germany
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Product attribute value caching -->
+    <type name="Magento\Eav\Model\Entity\Attribute\Source\Table" shared="true">
+        <plugin name="cache_attribute_options" type="DMC\Performance\Plugin\Magento\Eav\Model\Entity\Attribute\Source\Table" sortOrder="100"/>
+    </type>
+
+    <!-- Cache the top menu categories with a custom cache -->
+    <preference for="Magento\Catalog\Plugin\Block\Topmenu" type="DMC\Performance\Plugin\Magento\Catalog\Plugin\Block\Topmenu"/>
+    <type name="DMC\Performance\Plugin\Magento\Catalog\Plugin\Block\Topmenu">
+        <arguments>
+            <argument name="dataCollection" xsi:type="object" shared="false">Magento\Framework\Data\Collection</argument>
+        </arguments>
+    </type>
+
+    <!-- Enable block caching of anonymous blocks by manual demand -->
+    <type name="Magento\Cms\Block\Block">
+        <plugin name="set_store_cache_key" type="DMC\Performance\Plugin\Magento\Cms\Block\Block" sortOrder="100" ></plugin>
+    </type>
+
+</config>
