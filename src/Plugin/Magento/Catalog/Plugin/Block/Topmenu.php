@@ -123,6 +123,7 @@ class Topmenu extends \Magento\Catalog\Plugin\Block\Topmenu
             return $cachedData;
         }
 
+        $cachedData = [];
         $collection = parent::getCategoryTree($storeId, $rootId);
         $items = $collection->getItems();
 

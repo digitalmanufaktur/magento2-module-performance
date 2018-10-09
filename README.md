@@ -112,4 +112,10 @@ Things that will not be added with this, but could be useful depending on your c
 
 ## 1.0.0
 
-Initial version
+* Initial version
+
+## 1.0.1
+
+* Fix for empty categories
+* Add compatibility
+* Add LICENCE.md

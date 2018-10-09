@@ -1,7 +1,7 @@
 {
     "name": "dmc/m2-module-performance",
     "type": "magento2-module",
-    "license": "OSL-3.0",
+    "license": "GPL-3.0-only",
     "description": "Performance enhancements for Magento 2",
     "homepage": "https://github.com/digitalmanufaktur",
     "keywords": [
